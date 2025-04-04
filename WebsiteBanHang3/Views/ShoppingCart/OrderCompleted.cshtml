@@ -1,0 +1,11 @@
+﻿@model int
+
+<div class="container text-center my-5">
+    <h2 class="display-4 text-success">Order Completed</h2>
+    <p class="lead">Your order with ID <strong>#@Model</strong> has been placed successfully.</p>
+
+    <div class="mt-4">
+        <a href="/" class="btn btn-primary btn-lg">Return to Home</a>
+        <a href="/Order/Details/@Model" class="btn btn-info btn-lg">View Order Details</a>
+    </div>
+</div>

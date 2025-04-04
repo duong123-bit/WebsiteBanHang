@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebsiteBanHang3.Models.Product>
+<h2 class="text-center my-4">Product List</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Images</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@string.Format("{0:C}", product.Price)</td> <!-- Hiển thị giá theo định dạng tiền tệ -->
+                    <td>@product.Description</td>
+                    <td>@product.Category?.Name</td>
+                    <td>
+                        <img src="@product.ImageUrl" alt="Product Image" class="img-fluid" style="max-width: 80px;" />
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-action="Display" asp-route-id="@product.Id">View</a>
+                        <a class="btn btn-warning btn-sm" asp-action="Update" asp-route-id="@product.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

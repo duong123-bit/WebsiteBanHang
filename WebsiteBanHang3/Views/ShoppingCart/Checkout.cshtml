@@ -1,0 +1,31 @@
+﻿@model Order
+
+<h2 class="text-center my-4">Checkout</h2>
+
+<div class="container">
+    <form asp-action="Checkout" method="post">
+        <div class="form-group">
+            <label asp-for="ShippingAddress" class="font-weight-bold">Shipping Address</label>
+            <input asp-for="ShippingAddress" class="form-control" placeholder="Enter your shipping address" required />
+            <span asp-validation-for="ShippingAddress" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Notes" class="font-weight-bold">Additional Notes</label>
+            <textarea asp-for="Notes" class="form-control" rows="4" placeholder="Enter any additional instructions or notes"></textarea>
+            <span asp-validation-for="Notes" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <!-- Optional: If you have a total section, you can add it here -->
+            <div>
+                <strong>Total: </strong> @string.Format("{0:C}", Model.TotalAmount) <!-- Format total if available -->
+            </div>
+
+            <button type="submit" class="btn btn-success btn-lg">Place Order</button>
+        </div>
+    </form>
+</div>
+
+<!-- Optional: Add some spacing at the bottom -->
+<div class="mt-5"></div>
